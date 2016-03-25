@@ -6,12 +6,16 @@ var cookieStore = function(storeLocation, minCust, maxCust, avgSale, openHours) 
   this.openHours = openHours;
 }
 
+cookieStore.prototype.generateRandom = function(minCust, maxCust) {
+  return Math.floor(Math.random() * (maxCust - minCust + 1)) + minCust;
+}
+
+
 var pioneerSquare = new cookieStore("Pioneer Square", 17, 18, 5.2, 8);
 var portlandAirport = new cookieStore("Portland Airport", 6, 24, 1.2, 8);
 var washingtonSquare = new cookieStore("Washington Square", 11, 38, 1.9, 8);
 var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, 8);
 var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, 8);
-
 
 
 
