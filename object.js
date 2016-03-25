@@ -23,15 +23,18 @@ cookieStore.prototype.salesPerHour = function() {
 // Generate daily sales total
 cookieStore.prototype.dailySaleTotal = function() {
   var total = 0;
-
-  for (var i=0; i < 7; i++) {
+  
+  for (var i=0; i < this.openHours; i++) {
     total += this.salesPerHour();
   }
   return total;
 }
+
 
 var pioneerSquare = new cookieStore("Pioneer Square", 17, 18, 5.2, 8);
 var portlandAirport = new cookieStore("Portland Airport", 6, 24, 1.2, 8);
 var washingtonSquare = new cookieStore("Washington Square", 11, 38, 1.9, 8);
 var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, 8);
 var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, 8);
+
+console.log(pioneerSquare.dailySaleTotal());
