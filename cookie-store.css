@@ -1,0 +1,58 @@
+* {
+  border: 1px solid black;
+}
+
+body {
+  background: #cce6ff;
+}
+
+header {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  background-color:  #ffcc80;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+#buttonSection {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  background-color: #eaeffa;
+  width: 30%;
+}
+
+button:hover {
+  height: 200px;
+  width: 30%;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#dataDIV {
+  text-align: center;
+}
+
+ul {
+  display: inline-block;
+  width: 15%;
+  vertical-align: top;
+  font-weight: bold;
+  list-style-type: none;
+  list-style-position: inside;
+  font-family: Georgia;
+  font-size: 20px;
+  color: #ff704d;
+}
+
+li {
+  font-weight: normal;
+  line-height: 30px;
+  font-family: Arial;
+  color: #006600;
+}
