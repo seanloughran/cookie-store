@@ -1,6 +1,6 @@
 console.log("test")
 
-// Cookie Store object
+// Cookie Store object constructor
 var cookieStore = function(storeLocation, minCustomer, maxCustomer, avgSale, openHours, locationID) {
   this.storeLocation = storeLocation;
   this.minCustomer = minCustomer;
@@ -76,3 +76,6 @@ var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, 8, "pearl");
 
 pioneerSquare.addData();
 portlandAirport.addData();
+washingtonSquare.addData();
+sellwood.addData();
+pearlDistrict.addData();
