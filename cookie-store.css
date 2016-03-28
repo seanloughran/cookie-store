@@ -7,7 +7,7 @@ header {
 }
 
 h1 {
-  background-color: rgb(255, 212, 128);
+  background-color: #ffd480;
   color: #ff704d;
   text-align: center;
   margin-top: 0px;
@@ -15,6 +15,7 @@ h1 {
   padding-top: 30px;
   padding-bottom: 30px;
   font-size: 50px;
+  font-family: Tahoma, sans-serif;
 }
 
 #buttonSection {
@@ -43,31 +44,31 @@ button:hover {
 
 ul {
   display: inline-block;
-  background-color: rgb(255, 212, 128);
+  background-color: #ffd480;
   border: 1px dashed black;
   border-radius: 5px;
-  text-align: center;
+  text-align: left;
   width: 15%;
+  height: 50%;
   vertical-align: top;
   font-weight: bold;
   list-style-type: none;
-  list-style-position: inside;
-  font-family: Georgia;
   font-size: 20px;
   color: #ff704d;
-  padding: 15px 20px 15px 20px;
+  padding: 15px 20px 15px 30px;
   margin-right: 2px;
   margin-left: 2px;
+  font-family: Tahoma, sans-serif;
 }
 
 li {
   font-weight: normal;
   line-height: 30px;
-  font-family: Arial;
   color: #006600;
+  font-family: Courier, sans-serif;
 }
 
 li:hover {
-  background-color: #ff4d94;
+  text-decoration: underline;
   font-weight: bold;
 }
