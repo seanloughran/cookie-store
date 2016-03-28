@@ -1,0 +1,49 @@
+body {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.cheader {
+  color: #ff704d;
+  font-family: Tahoma, sans-serif;
+}
+
+h4 {
+  color: #006600;
+  font-family: Courier, sans-serif;
+}
+
+#colorpallet {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+div {
+  width: 24.2%;
+  height: 100px;
+  display: inline-block;
+  margin-right:2px;
+  margin-left:2px;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+
+#lightblue {
+  background-color: #cce6ff;
+}
+
+#containerorange {
+  background-color: #ffd480;
+}
+
+#titlecolor {
+  background-color: #ff704d;
+}
+
+#statcolor {
+  background-color: #006600;
+}
+
+p {
+  vertical-align: -40;
+}

@@ -1,20 +1,21 @@
-* {
-  border: 1px solid black;
-}
-
 body {
   background: #cce6ff;
 }
 
 header {
-  text-align: center;
   width: 100%;
-  margin: auto;
-  background-color:  #ffcc80;
 }
 
 h1 {
+  background-color: #ffd480;
+  color: #ff704d;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 50px;
+  font-family: Tahoma, sans-serif;
 }
 
 #buttonSection {
@@ -23,12 +24,15 @@ h1 {
 
 button {
   display: inline-block;
-  background-color: #eaeffa;
   width: 30%;
+  height: 20px;
+  transition: height .5s, font-size .5s;
+  color: #006600;
+  background-color: #cce6ff;
 }
 
 button:hover {
-  height: 200px;
+  height: 100px;
   width: 30%;
   font-size: 30px;
   font-weight: bold;
@@ -40,19 +44,31 @@ button:hover {
 
 ul {
   display: inline-block;
+  background-color: #ffd480;
+  border: 1px dashed black;
+  border-radius: 5px;
+  text-align: left;
   width: 15%;
+  height: 50%;
   vertical-align: top;
   font-weight: bold;
   list-style-type: none;
-  list-style-position: inside;
-  font-family: Georgia;
   font-size: 20px;
   color: #ff704d;
+  padding: 15px 20px 15px 30px;
+  margin-right: 2px;
+  margin-left: 2px;
+  font-family: Tahoma, sans-serif;
 }
 
 li {
   font-weight: normal;
   line-height: 30px;
-  font-family: Arial;
   color: #006600;
+  font-family: Courier, sans-serif;
+}
+
+li:hover {
+  text-decoration: underline;
+  font-weight: bold;
 }
