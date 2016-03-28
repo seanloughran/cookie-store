@@ -1,19 +1,19 @@
-* {
-  border: 1px solid black;
-}
-
 body {
   background: #cce6ff;
 }
 
 header {
-  text-align: center;
   width: 100%;
-  margin: auto;
-  background-color:  #ffcc80;
 }
 
 h1 {
+  background-color: rgb(255, 212, 128);
+  color: #ff704d;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 50px;
 }
 
@@ -23,12 +23,15 @@ h1 {
 
 button {
   display: inline-block;
-  background-color: #eaeffa;
   width: 30%;
+  height: 20px;
+  transition: height .5s, font-size .5s;
+  color: #006600;
+  background-color: #cce6ff;
 }
 
 button:hover {
-  height: 200px;
+  height: 100px;
   width: 30%;
   font-size: 30px;
   font-weight: bold;
@@ -40,6 +43,10 @@ button:hover {
 
 ul {
   display: inline-block;
+  background-color: rgb(255, 212, 128);
+  border: 1px dashed black;
+  border-radius: 5px;
+  text-align: center;
   width: 15%;
   vertical-align: top;
   font-weight: bold;
@@ -48,6 +55,9 @@ ul {
   font-family: Georgia;
   font-size: 20px;
   color: #ff704d;
+  padding: 15px 20px 15px 20px;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 li {
@@ -55,4 +65,9 @@ li {
   line-height: 30px;
   font-family: Arial;
   color: #006600;
+}
+
+li:hover {
+  background-color: #ff4d94;
+  font-weight: bold;
 }

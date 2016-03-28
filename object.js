@@ -1,6 +1,3 @@
-console.log("test")
-
-
 // Cookie Store object constructor
 var cookieStore = function(storeLocation, minCustomer, maxCustomer, avgSale, openHours, locationID) {
   this.storeLocation = storeLocation;
@@ -86,9 +83,3 @@ function genSales() {
   sellwood.addData();
   pearlDistrict.addData();
 }
-
-// pioneerSquare.addData();
-// portlandAirport.addData();
-// washingtonSquare.addData();
-// sellwood.addData();
-// pearlDistrict.addData();
