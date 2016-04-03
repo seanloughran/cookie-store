@@ -44,7 +44,7 @@ cookieStore.prototype.addData = function() {
 
   var location = document.createTextNode(this.storeLocation); //stores store location name as text node.
   var td = document.createElement('td'); //creat table data element
-  td.setAttribute('class', 'locationTD'); 
+  td.setAttribute('class', 'locationTD');
   td.appendChild(location); //Adds location name to td.
   document.getElementById(storeID).appendChild(td); //adds td to row
 
@@ -103,6 +103,27 @@ var washingtonSquare = new cookieStore("Washington Square", 11, 38, 1.9, "washin
 var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, "sellwood");
 var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, "pearl");
 
+var storeArray = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict];
+
+function addStore(formsubmit) {
+  var formIsValid = true;
+
+  var locationName = formsubmit.location.value;
+  var minCustomer = parseFloat(formsubmit.minCustomers.value);
+  var maxCustomer = parseFloat(formsubmit.maxCustomers.value);
+  var averageSales = parseFloat(formsubmit.averageSales.value);
+  var storeID = formsubmit.storeID.value;
+
+  console.log(averageSales);
+
+  if (formIsValid) {
+    var newStore = new cookieStore(locationName, minCustomer, maxCustomer, averageSales, storeID);
+  }
+
+  storeArray.push(newStore);
+  newStore.addData();
+}
+
 function genSales() {
   var tableParent = document.getElementById("main_table");
   var x = document.getElementsByClassName("table_row");
@@ -112,9 +133,8 @@ function genSales() {
       tableParent.removeChild(x[i]);
     }
   }
-  pioneerSquare.addData();
-  portlandAirport.addData();
-  washingtonSquare.addData();
-  sellwood.addData();
-  pearlDistrict.addData();
+
+  for (z=0; z<storeArray.length; z++) {
+    storeArray[z].addData();
+  }
 }

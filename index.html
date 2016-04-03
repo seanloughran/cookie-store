@@ -8,9 +8,28 @@
     <header>
       <h1>Sean's Cookie Empire</h1>
     </header>
-    <section id="buttonSection">
+
+    <div id="buttonSection">
       <button onclick="genSales()">Generate Sales</button>
-    </section>
+    </div>
+
+    <div id="formdiv">
+      <form>
+        <p>Add a new location!</p>
+        <label for="storelocation">Store Location: </label>
+        <input type="text" id="formStoreLocation" name="location">
+        <label for="minimumCustomers">Minimum Customers: </label>
+        <input type="text" id="formMinCustomer" name="minCustomers">
+        <label for="maximumCustomers">Maximum Customers: </label>
+        <input type="text" id="formMaxCustomers" name="maxCustomers">
+        <label for="averageSales">Average Hourly Sales: </label>
+        <input type="text" id="formAverageSales" name="averageSales">
+        <label for="storeID">Enter Store ID: </label>
+        <input type="text" id="formStoreID" name="storeID">
+        <input type="button" value="Add Location" onclick="addStore(this.form)">
+      </form>
+    </div>
+
 
     <div id="tablediv">
     <table id="main_table">
@@ -18,11 +37,6 @@
     </table>
     </div>
 
-    <nav id="navigation"></nav>
-
-    <div id="dataDIV">
-
-    </div>
 
     <script type="text/javascript" src="object.js"></script>
   </body>
