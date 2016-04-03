@@ -38,6 +38,7 @@ cookieStore.prototype.addData = function() {
   var storeID = this.locationID;
   var tr = document.createElement('tr');
   tr.setAttribute('id', storeID);
+  tr.setAttribute('class', "table_row");
   document.getElementById("main_table").appendChild(tr);
 
   var location = document.createTextNode(this.storeLocation);
@@ -52,6 +53,8 @@ cookieStore.prototype.addData = function() {
     td.appendChild(saleStat);
     document.getElementById(storeID).appendChild(td);
   }
+
+  this.salesArray = [];
 
 
 
@@ -92,7 +95,11 @@ var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, "sellwood");
 var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, "pearl");
 
 function genSales() {
-  document.getElementById('dataDIV').innerHTML = " ";
+  var tableParent = document.getElementById("main_table");
+  var x = document.getElementsByClassName("table_row");
+  for (i=0;i<x.length;i++) {
+    tableParent.removeChild(x[i]);
+  }
   pioneerSquare.addData();
   portlandAirport.addData();
   washingtonSquare.addData();
