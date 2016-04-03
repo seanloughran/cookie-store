@@ -34,25 +34,34 @@ cookieStore.prototype.dailySaleTotal = function() {
 
 cookieStore.prototype.addData = function() {
   this.dailySaleTotal();
+  var total = this.total;
 
-  var storeID = this.locationID;
-  var tr = document.createElement('tr');
-  tr.setAttribute('id', storeID);
-  tr.setAttribute('class', "table_row");
-  document.getElementById("main_table").appendChild(tr);
+  var storeID = this.locationID; //stores store ID
+  var tr = document.createElement('tr'); //creates row element
+  tr.setAttribute('id', storeID); //Gives row specific store id
+  tr.setAttribute('class', "table_row"); //Gives row table_row class
+  document.getElementById("main_table").appendChild(tr); //add row to table
 
-  var location = document.createTextNode(this.storeLocation);
-  var td = document.createElement('td');
-  td.appendChild(location);
-  document.getElementById(storeID).appendChild(td);
+  var location = document.createTextNode(this.storeLocation); //stores store location name as text node.
+  var td = document.createElement('td'); //creat table data element
+  td.setAttribute('class', 'locationTD'); 
+  td.appendChild(location); //Adds location name to td.
+  document.getElementById(storeID).appendChild(td); //adds td to row
 
-  for (i=0; i < this.salesArray.length; i++) {
-    var td = document.createElement('td');
-    var saleStat = this.salesArray[i];
+  for (i=0; i < this.salesArray.length; i++) { //This for loop goes through the generated
+    var td = document.createElement('td'); // sales array and adds each to its own td
+    td.setAttribute('class', 'hourlySales');
+    var saleStat = this.salesArray[i]; // and adds that td to its specified row
     saleStat = document.createTextNode(saleStat);
     td.appendChild(saleStat);
     document.getElementById(storeID).appendChild(td);
   }
+
+  var total = document.createTextNode(total); //This block creates a final td for the daily
+  var tdtotal = document.createElement('td'); // sales total.
+  tdtotal.setAttribute('class', 'storeTotal');
+  tdtotal.appendChild(total);
+  document.getElementById(storeID).appendChild(tdtotal);
 
   this.salesArray = [];
 
@@ -97,8 +106,11 @@ var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, "pearl");
 function genSales() {
   var tableParent = document.getElementById("main_table");
   var x = document.getElementsByClassName("table_row");
-  for (i=0;i<x.length;i++) {
-    tableParent.removeChild(x[i]);
+
+  if (x.length > 0) {
+    for (i=x.length-1; i>=0; i--) {
+      tableParent.removeChild(x[i]);
+    }
   }
   pioneerSquare.addData();
   portlandAirport.addData();

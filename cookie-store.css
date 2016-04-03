@@ -1,4 +1,4 @@
-* {border: 1px solid black;}
+/** {border: 1px solid black;}*/
 
 body {
   background: #cce6ff;
@@ -42,12 +42,40 @@ button:hover {
 
 #table_div {
   width:100%;
-  text-align:center;
 }
 
 table {
+  font-size: 30px;
   text-align: center;
   margin: 30px auto;
+}
+
+.locationTD, #hoursRow {
+  font-family: Tahoma, sans-serif;
+  background-color: #ffd480;
+  color: #ff704d;
+}
+
+.hourlySales, .storeTotal {
+  font-family: Courier, sans-serif;
+}
+
+.hourlySales {
+  background-color: #ff704d;
+  color: #ffd480;
+}
+
+.storeTotal {
+  background-color: #ffd480;
+  color: #006600; 
+}
+
+#hoursRow th {
+  padding: 11px;
+}
+
+.locationTD {
+  padding: 6px;
 }
 
 #dataDIV {
@@ -84,3 +112,5 @@ li:hover {
   text-decoration: underline;
   font-weight: bold;
 }
+
+#blankTD {background-color: #cce6ff}
