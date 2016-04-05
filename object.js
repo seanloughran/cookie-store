@@ -108,20 +108,50 @@ var storeArray = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pe
 function addStore(formsubmit) {
   var formIsValid = true;
 
+  if (formsubmit.location.value == "") {
+    formsubmit.location.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.minCustomers.value == "") {
+    formsubmit.minCustomers.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.maxCustomers.value == "") {
+    formsubmit.maxCustomers.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.averageSales.value == "") {
+    formsubmit.averageSales.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.storeID.value == "") {
+    formsubmit.storeID.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+
   var locationName = formsubmit.location.value;
   var minCustomer = parseFloat(formsubmit.minCustomers.value);
   var maxCustomer = parseFloat(formsubmit.maxCustomers.value);
   var averageSales = parseFloat(formsubmit.averageSales.value);
   var storeID = formsubmit.storeID.value;
 
-  console.log(averageSales);
-
   if (formIsValid) {
     var newStore = new cookieStore(locationName, minCustomer, maxCustomer, averageSales, storeID);
-  }
+    storeArray.push(newStore);
+    newStore.addData();
 
-  storeArray.push(newStore);
-  newStore.addData();
+    formsubmit.location.value = "";
+    formsubmit.minCustomers.value = "";
+    formsubmit.maxCustomers.value = "";
+    formsubmit.averageSales.value = "";
+    formsubmit.storeID.value = "";
+    formsubmit.location.setAttribute('class', 'blankback');
+    formsubmit.minCustomers.setAttribute('class', 'blankback');
+    formsubmit.maxCustomers.setAttribute('class', 'blankback');
+    formsubmit.averageSales.setAttribute('class', 'blankback');
+    formsubmit.storeID.setAttribute('class', 'blankback');
+    newStore = "";
+  }
 }
 
 function genSales() {
