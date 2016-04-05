@@ -40,6 +40,34 @@ button:hover {
   font-weight: bold;
 }
 
+form {
+  border: 1px red solid;
+  width: 400px;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding: 0px auto;
+}
+
+#formAddButton {
+  margin-left: 100px;
+}
+
+.title {
+  float: left;
+  text-align: right;
+  width: 200px;
+  padding-right: 10px;
+}
+
+label, input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+label {
+
+}
+
 #table_div {
   width:100%;
 }
@@ -67,10 +95,10 @@ table {
 
 .storeTotal {
   background-color: #ffd480;
-  color: #006600; 
+  color: #006600;
 }
 
-#hoursRow th {
+th {
   padding: 11px;
 }
 
@@ -78,39 +106,10 @@ table {
   padding: 6px;
 }
 
-#dataDIV {
-  text-align: center;
-}
-
-ul {
-  display: inline-block;
-  background-color: #ffd480;
-  border: 1px dashed black;
-  border-radius: 5px;
-  text-align: left;
-  width: 15%;
-  height: 50%;
-  vertical-align: top;
-  font-weight: bold;
-  list-style-type: none;
-  font-size: 20px;
-  color: #ff704d;
-  padding: 15px 20px 15px 30px;
-  margin-right: 2px;
-  margin-left: 2px;
-  font-family: Tahoma, sans-serif;
-}
-
-li {
-  font-weight: normal;
-  line-height: 30px;
-  color: #006600;
-  font-family: Courier, sans-serif;
-}
-
-li:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}
+p {text-align:center;}
 
 #blankTD {background-color: #cce6ff}
+
+.required {background-color: red;}
+
+.blankback {background-color: white;}
