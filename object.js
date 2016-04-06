@@ -104,10 +104,13 @@ var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, "sellwood");
 var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, "pearl");
 
 var storeArray = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict];
+var idArray = ["pearl", "pioneer", "portland", "washington", "sellwood"];
 
 function addStore(formsubmit) {
   var formIsValid = true;
 
+  //This block of code checks that the form boxes are not blank. If the are it
+  //turns them red and won't run the code.
   if (formsubmit.location.value == "") {
     formsubmit.location.setAttribute('class', 'required');
     formIsValid = false;
@@ -129,22 +132,36 @@ function addStore(formsubmit) {
     formIsValid = false;
   }
 
+  //Enters in form information
   var locationName = formsubmit.location.value;
   var minCustomer = parseFloat(formsubmit.minCustomers.value);
   var maxCustomer = parseFloat(formsubmit.maxCustomers.value);
   var averageSales = parseFloat(formsubmit.averageSales.value);
   var storeID = formsubmit.storeID.value;
 
-  if (formIsValid) {
-    var newStore = new cookieStore(locationName, minCustomer, maxCustomer, averageSales, storeID);
-    storeArray.push(newStore);
-    newStore.addData();
+  //Checks the given ID against ID's already in use.
+  for (t=0; t<idArray.length; t++) {
+    if (storeID == idArray[t]) {
+      formIsValid = false;
+      formsubmit.storeID.setAttribute('class', 'required');
+      alert("The ID you entered was already in use. Please enter another.")
+    }
+  }
 
+  if (formIsValid) { //If everything entered is okay the form creates a new store.
+    idArray.push(storeID); //Adds given ID to idArray.
+    var newStore = new cookieStore(locationName, minCustomer, maxCustomer, averageSales, storeID);
+    storeArray.push(newStore); //Adds store object to storeArray.
+    newStore.addData(); //Adds given data to table.
+
+    //Blanks out form data.
     formsubmit.location.value = "";
     formsubmit.minCustomers.value = "";
     formsubmit.maxCustomers.value = "";
     formsubmit.averageSales.value = "";
     formsubmit.storeID.value = "";
+
+    //If form text boxes were red, makes them white again.
     formsubmit.location.setAttribute('class', 'blankback');
     formsubmit.minCustomers.setAttribute('class', 'blankback');
     formsubmit.maxCustomers.setAttribute('class', 'blankback');
