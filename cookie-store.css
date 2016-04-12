@@ -1,20 +1,23 @@
-* {
-  border: 1px solid black;
-}
+/** {border: 1px solid black;}*/
 
 body {
   background: #cce6ff;
 }
 
 header {
-  text-align: center;
   width: 100%;
-  margin: auto;
-  background-color:  #ffcc80;
 }
 
 h1 {
+  background-color: #ffd480;
+  color: #ff704d;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 50px;
+  font-family: Tahoma, sans-serif;
 }
 
 #buttonSection {
@@ -23,36 +26,90 @@ h1 {
 
 button {
   display: inline-block;
-  background-color: #eaeffa;
   width: 30%;
+  height: 20px;
+  transition: height .5s, font-size .5s;
+  color: #006600;
+  background-color: #cce6ff;
 }
 
 button:hover {
-  height: 200px;
+  height: 100px;
   width: 30%;
   font-size: 30px;
   font-weight: bold;
 }
 
-#dataDIV {
-  text-align: center;
+form {
+  border: 1px red solid;
+  width: 400px;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding: 0px auto;
 }
 
-ul {
-  display: inline-block;
-  width: 15%;
-  vertical-align: top;
-  font-weight: bold;
-  list-style-type: none;
-  list-style-position: inside;
-  font-family: Georgia;
-  font-size: 20px;
+#formAddButton {
+  margin-left: 100px;
+}
+
+.title {
+  float: left;
+  text-align: right;
+  width: 200px;
+  padding-right: 10px;
+}
+
+label, input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+label {
+
+}
+
+#table_div {
+  width:100%;
+}
+
+table {
+  font-size: 30px;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.locationTD, #hoursRow {
+  font-family: Tahoma, sans-serif;
+  background-color: #ffd480;
   color: #ff704d;
 }
 
-li {
-  font-weight: normal;
-  line-height: 30px;
-  font-family: Arial;
+.hourlySales, .storeTotal {
+  font-family: Courier, sans-serif;
+}
+
+.hourlySales {
+  background-color: #ff704d;
+  color: #ffd480;
+}
+
+.storeTotal {
+  background-color: #ffd480;
   color: #006600;
 }
+
+th {
+  padding: 11px;
+}
+
+.locationTD {
+  padding: 6px;
+}
+
+p {text-align:center;}
+
+#blankTD {background-color: #cce6ff}
+
+.required {background-color: red;}
+
+.blankback {background-color: white;}

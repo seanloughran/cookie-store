@@ -1,13 +1,9 @@
-console.log("test")
-
-
 // Cookie Store object constructor
-var cookieStore = function(storeLocation, minCustomer, maxCustomer, avgSale, openHours, locationID) {
+var cookieStore = function(storeLocation, minCustomer, maxCustomer, avgSale, locationID) {
   this.storeLocation = storeLocation;
   this.minCustomer = minCustomer;
   this.maxCustomer = maxCustomer;
   this.avgSale = avgSale;
-  this.openHours = openHours;
   this.salesArray = [];
   this.locationID = locationID;
   this.total = 0;
@@ -29,7 +25,7 @@ cookieStore.prototype.salesPerHour = function() {
 cookieStore.prototype.dailySaleTotal = function() {
   var total = 0;
 
-  for (var i=0; i < this.openHours; i++) {
+  for (var i=0; i < 8; i++) {
     total += this.salesPerHour();
   }
   this.total = total;
@@ -38,18 +34,47 @@ cookieStore.prototype.dailySaleTotal = function() {
 
 cookieStore.prototype.addData = function() {
   this.dailySaleTotal();
+  var total = this.total;
 
-  var storeID = this.locationID;
-  var location = document.createTextNode(this.storeLocation);
+  var storeID = this.locationID; //stores store ID
+  var tr = document.createElement('tr'); //creates row element
+  tr.setAttribute('id', storeID); //Gives row specific store id
+  tr.setAttribute('class', "table_row"); //Gives row table_row class
+  document.getElementById("main_table").appendChild(tr); //add row to table
 
-  var ul = document.createElement('ul'); //creates unordered list
+  var location = document.createTextNode(this.storeLocation); //stores store location name as text node.
+  var td = document.createElement('td'); //creat table data element
+  td.setAttribute('class', 'locationTD');
+  td.appendChild(location); //Adds location name to td.
+  document.getElementById(storeID).appendChild(td); //adds td to row
+
+  for (i=0; i < this.salesArray.length; i++) { //This for loop goes through the generated
+    var td = document.createElement('td'); // sales array and adds each to its own td
+    td.setAttribute('class', 'hourlySales');
+    var saleStat = this.salesArray[i]; // and adds that td to its specified row
+    saleStat = document.createTextNode(saleStat);
+    td.appendChild(saleStat);
+    document.getElementById(storeID).appendChild(td);
+  }
+
+  var total = document.createTextNode(total); //This block creates a final td for the daily
+  var tdtotal = document.createElement('td'); // sales total.
+  tdtotal.setAttribute('class', 'storeTotal');
+  tdtotal.appendChild(total);
+  document.getElementById(storeID).appendChild(tdtotal);
+
+  this.salesArray = [];
+
+
+
+/*  var ul = document.createElement('ul'); //creates unordered list
   ul.setAttribute('id', storeID); //Gives list id which object assigned id
   ul.setAttribute('class', 'ulClass');
   ul.appendChild(location); //Add location property to display at top of list
-  document.getElementById("dataDIV").appendChild(ul); //Adds unordered list to div on page
+  document.getElementById("dataDIV").appendChild(ul); //Adds unordered list to div on page*/
 
 
-  for (i=0; i < this.salesArray.length; i++) {
+  /*for (i=0; i < this.salesArray.length; i++) {
     var hourArray = ["10am: ", "11am: ", "12pm: ", "1pm: ", "2pm: ", "3pm: ", "4pm: ", "5pm: "]; //Array created to house hours to display.
     var hr = hourArray[i];
     var hrsale = this.salesArray[i];
@@ -68,27 +93,95 @@ cookieStore.prototype.addData = function() {
   var sltotal = document.createTextNode("Total: " + dailyTotal);
   li.appendChild(sltotal);
   document.getElementById(storeID).appendChild(li);
-  this.salesArray = [];
+  this.salesArray = [];*/
 }
 
 
-var pioneerSquare = new cookieStore("Pioneer Square", 17, 88, 5.2, 8, "pioneer");
-var portlandAirport = new cookieStore("Portland Airport", 6, 24, 1.2, 8, "portland");
-var washingtonSquare = new cookieStore("Washington Square", 11, 38, 1.9, 8, "washington");
-var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, 8, "sellwood");
-var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, 8, "pearl");
+var pioneerSquare = new cookieStore("Pioneer Square", 17, 88, 5.2, "pioneer");
+var portlandAirport = new cookieStore("Portland Airport", 6, 24, 1.2, "portland");
+var washingtonSquare = new cookieStore("Washington Square", 11, 38, 1.9, "washington");
+var sellwood = new cookieStore("Sellwood", 20, 48, 3.3, "sellwood");
+var pearlDistrict = new cookieStore("Pearl District", 3, 24, 2.6, "pearl");
+
+var storeArray = [pioneerSquare, portlandAirport, washingtonSquare, sellwood, pearlDistrict];
+var idArray = ["pearl", "pioneer", "portland", "washington", "sellwood"];
+
+function addStore(formsubmit) {
+  var formIsValid = true;
+
+  //This block of code checks that the form boxes are not blank. If the are it
+  //turns them red and won't run the code.
+  if (formsubmit.location.value == "") {
+    formsubmit.location.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.minCustomers.value == "") {
+    formsubmit.minCustomers.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.maxCustomers.value == "") {
+    formsubmit.maxCustomers.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.averageSales.value == "") {
+    formsubmit.averageSales.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+  if (formsubmit.storeID.value == "") {
+    formsubmit.storeID.setAttribute('class', 'required');
+    formIsValid = false;
+  }
+
+  //Enters in form information
+  var locationName = formsubmit.location.value;
+  var minCustomer = parseFloat(formsubmit.minCustomers.value);
+  var maxCustomer = parseFloat(formsubmit.maxCustomers.value);
+  var averageSales = parseFloat(formsubmit.averageSales.value);
+  var storeID = formsubmit.storeID.value;
+
+  //Checks the given ID against ID's already in use.
+  for (t=0; t<idArray.length; t++) {
+    if (storeID == idArray[t]) {
+      formIsValid = false;
+      formsubmit.storeID.setAttribute('class', 'required');
+      alert("The ID you entered was already in use. Please enter another.")
+    }
+  }
+
+  if (formIsValid) { //If everything entered is okay the form creates a new store.
+    idArray.push(storeID); //Adds given ID to idArray.
+    var newStore = new cookieStore(locationName, minCustomer, maxCustomer, averageSales, storeID);
+    storeArray.push(newStore); //Adds store object to storeArray.
+    newStore.addData(); //Adds given data to table.
+
+    //Blanks out form data.
+    formsubmit.location.value = "";
+    formsubmit.minCustomers.value = "";
+    formsubmit.maxCustomers.value = "";
+    formsubmit.averageSales.value = "";
+    formsubmit.storeID.value = "";
+
+    //If form text boxes were red, makes them white again.
+    formsubmit.location.setAttribute('class', 'blankback');
+    formsubmit.minCustomers.setAttribute('class', 'blankback');
+    formsubmit.maxCustomers.setAttribute('class', 'blankback');
+    formsubmit.averageSales.setAttribute('class', 'blankback');
+    formsubmit.storeID.setAttribute('class', 'blankback');
+    newStore = "";
+  }
+}
 
 function genSales() {
-  document.getElementById('dataDIV').innerHTML = " ";
-  pioneerSquare.addData();
-  portlandAirport.addData();
-  washingtonSquare.addData();
-  sellwood.addData();
-  pearlDistrict.addData();
-}
+  var tableParent = document.getElementById("main_table");
+  var x = document.getElementsByClassName("table_row");
 
-// pioneerSquare.addData();
-// portlandAirport.addData();
-// washingtonSquare.addData();
-// sellwood.addData();
-// pearlDistrict.addData();
+  if (x.length > 0) {
+    for (i=x.length-1; i>=0; i--) {
+      tableParent.removeChild(x[i]);
+    }
+  }
+
+  for (z=0; z<storeArray.length; z++) {
+    storeArray[z].addData();
+  }
+}
